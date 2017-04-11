@@ -17,8 +17,12 @@ function getRepoContributors(repoOwner, repoName, cb) {
     'User-Agent': 'request'
   }
 };
+
+//
   request( options, function(err, response, body) {
-  console.log(JSON.parse(body));
+    if (err) throw err;
+  var dataObject = JSON.parse(body);
+  cb(err, dataObject);
 });
 
 }
@@ -27,5 +31,22 @@ function getRepoContributors(repoOwner, repoName, cb) {
 
 getRepoContributors("jquery", "jquery", function(err, result) {
   console.log("Errors:", err);
-  console.log("Result:", result);
+
+  for (var i of result) {
+    console.log(i.avatar_url);
+  }
+
+
+
+
+
+
+
+
 });
+
+
+
+
+
+
